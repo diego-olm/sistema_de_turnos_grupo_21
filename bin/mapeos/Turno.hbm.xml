@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Turno" table="turno">
+		<id column="turnoId" name="turnoId">
+			<generator class="identity" />
+		</id>
+		<property name="fecha" column="fecha" type="LocalDate" />
+		<property name="hora" column="hora" type="LocalTime" />
+		<property name="estado" column="estado" type="boolean" />
+		<many-to-one name="usuario" class="datos.Usuario"
+			column="usuarioId" not-null="true" />
+	</class>
+</hibernate-mapping>
