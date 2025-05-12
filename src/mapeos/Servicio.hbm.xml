@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Servicio" table="servicio">
+		<id column="servicioId" name="servicioId">
+			<generator class="identity" />
+		</id>
+		<property name="nombre" column="nombre" type="string" />
+		<property name="horaInicio" column="horaInicio" type="LocalTime" />
+		<property name="horaFin" column="horaFin" type="LocalTime" />
+		<property name="intervalo" column="intervalo" type="int" />	
+		<property name="estado" column="estado" type="boolean" />	
+		<one-to-one name="empleado" class="datos.Empleado" property-ref="servicio" />
+		<set name="turnos" table="turno" order-by="turnoId asc"
+				inverse="true" lazy="true" fetch="select">
+				<key column="servicioId" not-null="true" />
+				<one-to-many class="datos.Turno" />
+			</set>
+	</class>
+</hibernate-mapping>

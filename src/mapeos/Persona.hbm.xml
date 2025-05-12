@@ -12,6 +12,8 @@
 		<property name="dni" column="dni" type="long" />
 		<property name="telefono" column="telefono" type="long" />
 		<property name="localidad" column="localidad" type="string" />
+
+
 		<joined-subclass name="datos.Usuario" table="usuario">
 			<key column="usuarioId" />
 			<property column="nombreUsuario" name="nombreUsuario"
@@ -21,7 +23,14 @@
 				<key column="usuarioId" not-null="true" />
 				<one-to-many class="datos.Turno" />
 			</set>
-		</joined-subclass>
 
+		</joined-subclass>
+		<joined-subclass name="datos.Empleado"
+			table="empleado">
+			<key column="empleadoId" />
+			<property column="legajo" name="legajo" type="string" />
+			<many-to-one name="servicio" class="datos.Servicio"
+				column="servicioId" not-null="true" unique="true" />
+		</joined-subclass>
 	</class>
 </hibernate-mapping>

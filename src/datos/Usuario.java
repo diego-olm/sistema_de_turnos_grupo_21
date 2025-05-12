@@ -8,6 +8,7 @@ public class Usuario extends Persona {
 	private long usuarioId;
 	private String nombreUsuario;
 	private Set<Turno> turnos;
+
 	public Usuario() {
 
 	}
@@ -16,7 +17,7 @@ public class Usuario extends Persona {
 			String nombreUsuario) {
 		super(nombre, apellido, email, dni, telefono, localidad);
 		this.nombreUsuario = nombreUsuario;
-		this.turnos =  new HashSet<>();
+		this.turnos = new HashSet<>();
 	}
 
 	public long getUsuarioId() {
@@ -34,7 +35,7 @@ public class Usuario extends Persona {
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
-	
+
 	public Set<Turno> getTurnos() {
 		return turnos;
 	}
@@ -73,9 +74,14 @@ public class Usuario extends Persona {
 
 	@Override
 	public String toString() {
-		return "Usuario [usuarioId=" + usuarioId + ", nombreUsuario=" + nombreUsuario + ", personaId=" + personaId
-				+ ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", dni=" + dni + ", telefono="
-				+ telefono + ", localidad=" + localidad + "]";
+	    return String.format(
+	        "USUARIO » %s %s (ID: %d)\n" +
+	        "           Usuario: @%s | Email: %s\n" +
+	        "           Tel: %d | DNI: %d | %s\n\n",
+	        nombre, apellido, personaId, nombreUsuario, email, telefono, dni, localidad
+	    );
 	}
+
+
 
 }

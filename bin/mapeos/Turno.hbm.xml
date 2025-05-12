@@ -11,5 +11,7 @@
 		<property name="estado" column="estado" type="boolean" />
 		<many-to-one name="usuario" class="datos.Usuario"
 			column="usuarioId" not-null="true" />
+		<many-to-one name="servicio" class="datos.Servicio"
+			column="servicioId" not-null="true" />
 	</class>
 </hibernate-mapping>

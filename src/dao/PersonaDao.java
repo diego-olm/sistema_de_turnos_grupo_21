@@ -114,11 +114,12 @@ public class PersonaDao {
 		try {
 			iniciaOperacion();
 			String hql = "from Persona p where p.personaId=:personaId";
-			objeto = (Usuario) session.createQuery(hql).setParameter("idCliente", personaId).uniqueResult();
+			objeto = (Usuario) session.createQuery(hql).setParameter("personaId", personaId).uniqueResult();
 			Hibernate.initialize(objeto.getTurnos());
 		} finally {
 			session.close();
 		}
 		return objeto;
 	}
+
 }
