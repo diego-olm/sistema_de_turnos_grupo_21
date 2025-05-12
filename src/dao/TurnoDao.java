@@ -38,7 +38,7 @@ public class TurnoDao {
 		Turno obj = null;
 		try {
 			iniciaOperacion();
-			String hQL = "from Turno p inner join fetch p.usuario c where p.turnoId=:turnoId";
+			String hQL = "from Turno t inner join fetch t.usuario u where u.turnoId=:turnoId";
 			obj = (Turno) session.createQuery(hQL).setParameter("turnoId", turnoId).uniqueResult();
 		} finally {
 			session.close();
@@ -50,7 +50,7 @@ public class TurnoDao {
 		List<Turno> lista = null;
 		try {
 			iniciaOperacion();
-			String hQL = "from Turno t inner join fetch t.usuario u where c.personaId=:usuarioId";
+			String hQL = "from Turno t inner join fetch t.usuario u where u.personaId=:personaId";
 			lista = session.createQuery(hQL, Turno.class).setParameter("personaId", u.getPersonaId()).getResultList();
 		} finally {
 			session.close();

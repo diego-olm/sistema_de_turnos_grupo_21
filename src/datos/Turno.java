@@ -3,23 +3,32 @@ package datos;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Turno { 
+public class Turno {
 	private long turnoId;
 	private LocalDate fecha;
 	private LocalTime hora;
 	private boolean estado;
 	private Usuario usuario;
-	
-	
-	
-	public Turno() {}
-	
-	public Turno(LocalDate fecha, LocalTime hora, boolean estado, Usuario usuario) {
+	private Servicio servicio;
+
+	public Turno() {
+	}
+
+	public Turno(LocalDate fecha, LocalTime hora, boolean estado, Usuario usuario, Servicio servicio) {
 		super();
 		this.fecha = fecha;
 		this.hora = hora;
 		this.estado = estado;
 		this.usuario = usuario;
+		this.servicio = servicio;
+	}
+
+	public Servicio getServicio() {
+		return servicio;
+	}
+
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
 	}
 
 	public long getTurnoId() {
@@ -107,7 +116,7 @@ public class Turno {
 
 	@Override
 	public String toString() {
-		return "Turno [turnoId=" + turnoId + ", fecha=" + fecha + ", hora=" + hora + ", estado=" + estado + "]";
+	    return String.format("Turno{turnoId=%-2d | fecha=%-10s | hora=%-5s | estado=%-5s}",
+	                        turnoId, fecha, hora, estado);
 	}
-	
 }
